@@ -46,9 +46,9 @@ export const deletePost = async (req, res) => {
     const { id } = req.params
     const deleted = await Post.findByIdAndDelete(id)
     if (deleted) {
-      return res.status(200).send("Product deleted")
+      return res.status(200).send("Post deleted")
     }
-    throw new Error("Product not found")
+    throw new Error("Post not found")
   } catch (error) {
     console.log(error.message)
     res.status(500).json({ error: error.message })
