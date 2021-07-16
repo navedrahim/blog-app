@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-// import Layout from '../../components/Layout/Layout';
+import Layout from "../../components/Layout/Layout";
 import { getPost, updatePost } from "../../services/posts.js";
 
 function PostEdit() {
@@ -42,53 +42,53 @@ function PostEdit() {
   }
 
   return (
-    // <Layout>
-    <div className="post-edit">
-      <img className="edit-post-image" src={post.imgURL} alt={post.title} />
-      <form className="edit-form" onSubmit={handleSubmit}>
-        <div className="image-container">
+    <Layout>
+      <div className="post-edit">
+        <img className="edit-post-image" src={post.imgURL} alt={post.title} />
+        <form className="edit-form" onSubmit={handleSubmit}>
+          <div className="image-container">
+            <input
+              className="edit-input-image-link"
+              placeholder="Image Link"
+              value={post.imgURL}
+              name="imgURL"
+              required
+              onChange={handleChange}
+            />
+          </div>
           <input
-            className="edit-input-image-link"
-            placeholder="Image Link"
-            value={post.imgURL}
-            name="imgURL"
+            className="input-name"
+            placeholder="Title"
+            value={post.title}
+            name="title"
+            required
+            autoFocus
+            onChange={handleChange}
+          />
+          <input
+            className="input-author"
+            placeholder="Author"
+            value={post.author}
+            name="author"
             required
             onChange={handleChange}
           />
-        </div>
-        <input
-          className="input-name"
-          placeholder="Title"
-          value={post.title}
-          name="title"
-          required
-          autoFocus
-          onChange={handleChange}
-        />
-        <input
-          className="input-author"
-          placeholder="Author"
-          value={post.author}
-          name="author"
-          required
-          onChange={handleChange}
-        />
-        <textarea
-          className="textarea-body"
-          rows={10}
-          cols={78}
-          placeholder="Body"
-          value={post.body}
-          name="body"
-          required
-          onChange={handleChange}
-        />
-        <button type="submit" className="save-button">
-          Save
-        </button>
-      </form>
-    </div>
-    // </Layout>
+          <textarea
+            className="textarea-body"
+            rows={10}
+            cols={78}
+            placeholder="Body"
+            value={post.body}
+            name="body"
+            required
+            onChange={handleChange}
+          />
+          <button type="submit" className="save-button">
+            Save
+          </button>
+        </form>
+      </div>
+    </Layout>
   );
 }
 
