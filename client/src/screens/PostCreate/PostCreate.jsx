@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { createPost } from "../../services/posts";
 
+
 const PostCreate = () => {
   const [post, setPost] = useState({
     title: "",
@@ -13,10 +14,10 @@ const PostCreate = () => {
   const [isCreated, setCreated] = useState(false);
 
   const handleChange = (event) => {
-    const { title, value } = event.target;
+    const { name, value } = event.target;
     setPost({
       ...post,
-      [title]: value,
+      [name]: value,
     });
   };
 
@@ -36,6 +37,7 @@ const PostCreate = () => {
         className="input-title"
         placeholder="Title"
         value={post.title}
+        name="title"
         required
         onChange={handleChange}
       />
@@ -43,6 +45,7 @@ const PostCreate = () => {
         className="input-author"
         placeholder="Author"
         value={post.author}
+        name="author"
         required
         onChange={handleChange}
       />
@@ -51,6 +54,7 @@ const PostCreate = () => {
         rows={10}
         placeholder="Body"
         value={post.body}
+        name="body"
         required
         onChange={handleChange}
       />
@@ -58,6 +62,7 @@ const PostCreate = () => {
         className="input-image"
         placeholder="Image Link"
         value={post.imgURL}
+        name="imgURL"
         required
         onChange={handleChange}
       />
