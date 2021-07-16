@@ -1,5 +1,7 @@
+import "./Layout.css"
 import Nav from "../Nav/Nav.jsx"
 import Footer from "../Footer/Footer.jsx"
+
 
 function Layout(props) {
   return (
