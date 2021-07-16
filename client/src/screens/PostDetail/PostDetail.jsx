@@ -18,7 +18,7 @@ const PostDetail = () => {
 
   const handleDelete = () => {
     deletePost(post._id);
-    history.push("/posts");
+    setTimeout(history.push("/posts"), 1000);
   }
   
   return (
