@@ -7,6 +7,7 @@ const PostDetail = () => {
   const history = useHistory();
   const { id } = useParams();
   const [post, setPost] = useState({});
+  const [isDeleted, setIsDeleted] = useState(false);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -16,10 +17,11 @@ const PostDetail = () => {
     fetchPost();
   }, [id]);
 
-  const handleDelete = () => {
-    deletePost(post._id);
-    setTimeout(history.push("/posts"), 1000);
+  const handleDelete = async () => {
+    const deleted = await deletePost(post._id)
+    setIsDeleted({deleted})
   }
+  if (isDeleted) {history.push("/posts");}
   
   return (
     <Layout>
