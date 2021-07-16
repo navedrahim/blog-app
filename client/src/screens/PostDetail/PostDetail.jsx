@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import { getPost } from "../../services/posts.js";
+import { useParams, Link, useHistory } from "react-router-dom";
+import { getPost, deletePost } from "../../services/posts.js";
 import Layout from "../../components/Layout/Layout.jsx"
 
 const PostDetail = () => {
+  const history = useHistory();
   const { id } = useParams();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState({});
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -15,6 +16,11 @@ const PostDetail = () => {
     fetchPost();
   }, [id]);
 
+  const handleDelete = () => {
+    deletePost(post._id);
+    history.push("/posts");
+  }
+  
   return (
     <Layout>
       <div className="post-detail">
@@ -34,7 +40,7 @@ const PostDetail = () => {
          </button>
           <button
           className="delete-button"
-          // onClick={() => deletePost(product._id)}
+          onClick={() => handleDelete()}
          >
           Delete
           </button>

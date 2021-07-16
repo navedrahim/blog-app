@@ -43,4 +43,5 @@ export const deletePost = async (id) => {
   } catch (error) {
     throw error;
   }
+  
 };
