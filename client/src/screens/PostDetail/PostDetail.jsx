@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getPost } from "../../services/posts.js";
+import Layout from "../../components/Layout/Layout.jsx"
 
 const PostDetail = () => {
   const { id } = useParams();
@@ -15,29 +16,31 @@ const PostDetail = () => {
   }, [id]);
 
   return (
-    <div className="post-detail">
-      <h2 className="title">{post.title}</h2>
-      <h4 className="author">{post.author}</h4>
-      <h4 className="body">{post.body}</h4>
-      <img
-        className="post-detail-image"
-        src={`${post.imgURL}`}
-        alt={post.title}
-      />
-      <div className="button-container">
-        <button className="edit-button">
-          <Link className="edit-link" to={`/posts/${post._id}/edit`}>
+    <Layout>
+      <div className="post-detail">
+       <h2 className="title">{post.title}</h2>
+        <h4 className="author">{post.author}</h4>
+        <h4 className="body">{post.body}</h4>
+        <img
+         className="post-detail-image"
+         src={`${post.imgURL}`}
+          alt={post.title}
+        />
+        <div className="button-container">
+          <button className="edit-button">
+            <Link className="edit-link" to={`/posts/${post._id}/edit`}>
             Edit
-          </Link>
-        </button>
-        <button
+            </Link>
+         </button>
+          <button
           className="delete-button"
           // onClick={() => deletePost(product._id)}
-        >
+         >
           Delete
-        </button>
+          </button>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
