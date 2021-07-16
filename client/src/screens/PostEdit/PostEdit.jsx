@@ -44,9 +44,9 @@ function PostEdit() {
   return (
     // <Layout>
     <div className="post-edit">
-      <div className="image-container">
-        <img className="edit-post-image" src={post.imgURL} alt={post.title} />
-        <form onSubmit={handleSubmit}>
+      <img className="edit-post-image" src={post.imgURL} alt={post.title} />
+      <form className="edit-form" onSubmit={handleSubmit}>
+        <div className="image-container">
           <input
             className="edit-input-image-link"
             placeholder="Image Link"
@@ -55,14 +55,12 @@ function PostEdit() {
             required
             onChange={handleChange}
           />
-        </form>
-      </div>
-      <form className="edit-form" onSubmit={handleSubmit}>
+        </div>
         <input
           className="input-name"
           placeholder="Title"
           value={post.title}
-          name="Title"
+          name="title"
           required
           autoFocus
           onChange={handleChange}
